@@ -1,4 +1,4 @@
-package lab.a1;
+package lab;
 
 public class Matrix {
 	private int mat1[][], mat2[][];
