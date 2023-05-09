@@ -1,4 +1,4 @@
-package lab;
+package lab1;
 import java.util.Scanner;
 public class InputFromKeyboard {
 	public static void main(String args[]) {
@@ -16,6 +16,6 @@ public class InputFromKeyboard {
 		//nextFloat(), nextBoolean()
 		
 		System.out.println("Mrs/Ms. " + strName + ", " + iAge + "years old. " + "Your height is " + dHeight + ".");
-		
+		keyboard.close();
 	}
 }

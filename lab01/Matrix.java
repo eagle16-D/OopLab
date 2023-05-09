@@ -1,7 +1,6 @@
-package lab;
+package lab1;
 
 public class Matrix {
-	private int mat1[][], mat2[][];
 	
 	public static int[][] add(int mat1[][] ,int mat2[][]){
 		

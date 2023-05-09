@@ -1,4 +1,4 @@
-package lab;
+package lab1;
 import java.util.Scanner;
 public class triangle {
 	public static void main(String[] args) {
@@ -18,5 +18,7 @@ public class triangle {
 			}
 			System.out.println();
 		}
+		
+		keyboard.close();
 	}
 }

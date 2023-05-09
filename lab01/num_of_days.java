@@ -1,4 +1,4 @@
-package lab;
+package lab1;
 
 import java.time.*;
 import java.util.Scanner;
@@ -9,7 +9,7 @@ public class num_of_days {
 		
 		System.out.println("Year? ");
 		int year = keyboard.nextInt();
-		
+		keyboard.close();
 		// handle negavtive year
 		try {
 		    if (year < 0) {
@@ -19,12 +19,15 @@ public class num_of_days {
 		    System.out.println(e.getMessage());
 		}
 		
+		
 		if(year >= 0) {
 			//import input from keyboard
 			Scanner scanner = new Scanner(System.in);
 			System.out.println("Month? ");
 			String input = scanner.nextLine().trim();
-
+			
+			scanner.close();
+			
 			int monthNumber = -1;
 			
 			//set format of month to integer

@@ -1,4 +1,4 @@
-package lab;
+package lab1;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -59,6 +59,7 @@ public class array_sorting_sum_avg {
 		
 		//print avg
 		System.out.println("the average of array is " + arr1.average());
+		sc.close();
 	}
 	
 }
