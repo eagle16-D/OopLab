@@ -1,4 +1,4 @@
-package lab;
+package lab01;
 
 import java.time.*;
 import java.util.Scanner;
