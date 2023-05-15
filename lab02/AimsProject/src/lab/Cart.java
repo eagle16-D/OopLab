@@ -2,7 +2,7 @@ package lab;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
-	DigitalVideoDisc itemsOrdered[] = 
+	DigitalVideoDisc[] itemsOrdered = 
 			new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
 	
 	int qtyOrdered = 0;//keep track number of disc in cart
