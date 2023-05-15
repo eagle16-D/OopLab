@@ -3,6 +3,7 @@ package lab02;
 public class Aims {
 
 	public static void main(String[] args) {
+		// TODO Auto-generated method stub
 		//Create a new cart
 		Cart anOrder = new Cart();
 		
@@ -17,6 +18,8 @@ public class Aims {
 		anOrder.addDigitalVideoDisc(dvd3);
 		
 		//print total cost of the items in the cart
+//		anOrder.removeDigitalVideoDisc(dvd1);
+//		System.out.println(anOrder.itemsOrdered[0].getTitle());
 		System.out.println("Total Cost is: ");
 		System.out.println(anOrder.totalCost());
 	}
