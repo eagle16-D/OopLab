@@ -1,4 +1,4 @@
-package lab01;
+package lab;
 
 public class Matrix {
 	

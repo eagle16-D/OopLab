@@ -1,4 +1,4 @@
-package lab01;
+package lab;
 import java.util.Scanner;
 public class triangle {
 	public static void main(String[] args) {
