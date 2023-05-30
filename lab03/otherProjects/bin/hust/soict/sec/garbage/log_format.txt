@@ -1,0 +1,58 @@
+*Nginx
+
+các file log nằm ở /var/log/nginx/
+
+
+- log access cần thiết đặc biệt khi website bị tấn công DDOS. ta có thể xác định được nguồn tấn công, tần xuất, quy mô -> từ đó có thể chặn USer Agent hay IP nguồn.
+	+ log_format: main '$remote_addr - $remote_user [$time_local] "$request" '
+	         	   '$status $body_bytes_sent "$http_referer" '
+	         	   ' "$http_user_agent" "$http_x_forwarded_for" ';
+		main: tên của log format
+		remote_addr: dịa chỉ ip truy cập đến website
+		remote_user: ghi lại tài khoản truy cập( nếu trang web có xác thực người dùng, thường thì là ko có. và khi không có sẽ kí hiệu trong format là - -)
+
+		time_local: thời gian người dùng truy cập
+		request: đoạn đầu của request
+		status: trạng thái của respone( 200 là ok, 300....)
+		body_bytes_sent: kích thước body mà server respone(ko bao gồm header)
+		http_referer: url được tham chiếu
+		http_user_agent: thông tin trình duyệt, hđh mà người dùng truy cập
+		http_x_forwarded_for: được ghi vào log nếu webserver detect người dùng truy cập qua proxy server
+
+
+- log error ghi lại các lỗi cài đặt cấu hình, hay đơn giản chỉ là những warning giữa server và các dịch vụ của nó
+	+cú pháp: error_log   log_file   log_level
+
+		emerg: log ở level khẩn cấp, sắp sập 
+		alert: cảnh báo các vấn đề cần được xử lý ngay
+		crit: các vấn đề quan trọng nhưng ko cần phải xử lý ngay lập tức, theo dõi thêm
+		error: ghi lại thông tin lỗi như đăng nhập hoặc cấu hình sai, mức độ thấp hơn crit
+		warn: cảnh báo, ko phải lỗi
+		notice: thông báo gì đó
+		info: ghi thông tin hệ thông
+		debug: ghi lại mọi thứ, dùng để dò lỗi
+
+	debug có mức độ ưu tiên cao nhất
+	ở level debug, info, notice, warn thường ghi ra nhiều thông tin ko cần thiết
+	đôi khi hệ thống hđ ổn định, an toàn và thấy việc ghi log ko cần thiết thì có thể tắt đi để giảm tiêu hao tài nguyên
+
+
+
+* Apache
+
+/var/log/apache2/
+
+-log access
+	+ LogFormat default: "%h %l %u %t \"%r\" %>s %b"
+		%h: remote hostname(mặc định là ip truy cập tới server)
+		%l: remote logname
+		%u: remote user
+		% t: time receive request
+		%r: first line of request
+		%>s:final status of the original request	
+		%b: size of respone in bytes, Ko bao gồm header
+
+
+-log error:
+	+format: time   emerge   ip
+		
