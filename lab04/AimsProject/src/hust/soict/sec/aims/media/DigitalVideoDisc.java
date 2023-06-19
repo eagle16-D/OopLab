@@ -53,7 +53,7 @@ public class DigitalVideoDisc extends Disc implements Playable{
 	}
 	@Override
 	public String toString() {
-		return this.getId() + ". DVD - " + this.getTitle() + " - " + this.getCategory() + " - " + this.getDirector() + " - " + this.getLength() + ": " + this.getCost(); 
+		return "DVD - " + this.getTitle() + " - " + this.getCategory() + " - " + this.getDirector() + " - " + this.getLength() + ": " + this.getCost(); 
 	}
 	
 	public boolean isMatch(int id) {
@@ -72,7 +72,7 @@ public class DigitalVideoDisc extends Disc implements Playable{
 	
 	public void play() {
 		if(this.getLength() <= 0) {
-			System.out.println("DVD " + this.getTitle() + " cannot be played");
+			System.out.println("DVD " + this.getTitle() + " cannot be played because it's length is zero");
 		}else {
 			System.out.println("DVD " + this.getTitle() + " has length " + this.getLength());
 			

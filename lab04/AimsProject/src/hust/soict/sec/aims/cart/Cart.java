@@ -6,12 +6,12 @@ import hust.soict.sec.aims.media.Media;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
-	private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+	private static ArrayList<Media> itemsOrdered = new ArrayList<Media>();
 	
 	public void addMedia(Media media) {
 		if(itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
 			itemsOrdered.add(media);
-			System.out.println("the media is added");
+//			System.out.println("the media is added");
 		}
 	}
 	
@@ -25,7 +25,7 @@ public class Cart {
 		}
 	}
 	
-	public float totalCost() {
+	public static float totalCost() {
 		float sum = 0;
 		for(Media media : itemsOrdered) {
 			sum += media.getCost();
@@ -33,15 +33,18 @@ public class Cart {
 		return sum;
 	}
 	
-	public void print() {
+	public static void printCart() {
 		System.out.println("******************************CART******************************");
 		System.out.println("Ordered Items:");
 		for(Media media : itemsOrdered) {
-			System.out.println(itemsOrdered.indexOf(media) + "." + media.toString());
+			System.out.println(itemsOrdered.indexOf(media) + 1 +". " + media.toString());
 		}
-		System.out.println("Total cost: " + this.totalCost());
+		System.out.println("Total cost: " + totalCost());
 		System.out.println("*****************************************************************");
 	}
 	
+	public static ArrayList<Media> getItemsOrdered(){
+		return itemsOrdered;
+	}
 	
 }
