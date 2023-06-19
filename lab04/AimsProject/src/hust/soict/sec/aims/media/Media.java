@@ -1,11 +1,21 @@
 package hust.soict.sec.aims.media;
 
+
+import java.util.Comparator;
+
 public abstract class Media {
 	
 	private int id;
 	private String title;
 	private String category;
 	private float cost;
+	
+	public static final Comparator<Media> COMPARE_BY_TITLE_COST = 
+			new MediaComparatorByTitleCost();
+	public static final Comparator<Media> COMPARE_BY_COST_TITLE = 
+			new MediaComparatorByCostTitle();
+
+
 	
 	public Media(int id, String title, String category, float cost) {
 		super();
@@ -49,13 +59,13 @@ public abstract class Media {
 	public String getCategory() {
 		return category;
 	}
-	void setCategory(String category) {
+	public void setCategory(String category) {
 		this.category = category;
 	}
 	public float getCost() {
 		return cost;
 	}
-	void setCost(float cost) {
+	public void setCost(float cost) {
 		this.cost = cost;
 	}
 }

@@ -37,7 +37,7 @@ public class Book extends Media {
 		return authors;
 	}
 
-	void setAuthors(List<String> authors) {
+	public void setAuthors(List<String> authors) {
 		this.authors = authors;
 	}
 	
@@ -47,7 +47,7 @@ public class Book extends Media {
 		return length;
 	}
 
-	void setLength(int length) {
+	public void setLength(int length) {
 		this.length = length;
 	}
 
@@ -69,6 +69,11 @@ public class Book extends Media {
 		else {
 			System.out.println("Author " + authorName + " is not exist");
 		}
+	}
+	
+	@Override
+	public String toString() {
+		return "Book - " + this.getTitle() + " - " + this.getCategory() + " - " + this.getAuthors() + " - " + this.getLength() + ": " + this.getCost(); 
 	}
 	
 	
