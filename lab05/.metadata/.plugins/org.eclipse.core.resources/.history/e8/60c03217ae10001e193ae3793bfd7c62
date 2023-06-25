@@ -1,0 +1,13 @@
+/**
+ * 
+ */
+/**
+ * 
+ */
+module GUIProject {
+	requires java.desktop;
+	requires javafx.base;
+	requires javafx.fxml;
+	requires javafx.graphics;
+	exports hust.soict.sec.javafx;
+}

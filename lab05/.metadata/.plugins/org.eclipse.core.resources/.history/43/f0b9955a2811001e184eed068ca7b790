@@ -1,0 +1,10 @@
+/**
+ * 
+ */
+/**
+ * @author Nguyễn Hữu Duẩn
+ *
+ */
+module AimsProject {
+	requires java.desktop;
+}

@@ -1,0 +1,73 @@
+package hust.soict.sec.aims.screen;
+
+import java.io.IOException;
+
+import javax.swing.JFrame;
+
+import hust.soict.sec.aims.cart.Cart;
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+
+@SuppressWarnings("serial")
+public class CartScreen extends JFrame {
+	
+	private Cart cart;
+	
+	public CartScreen(Cart cart) {
+		super();
+		
+		this.setCart(cart);
+		
+		JFXPanel fxPanel = new JFXPanel();
+		this.add(fxPanel);
+		
+		this.setTitle("Cart");
+		this.setVisible(true);
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				try {
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("/hust/soict/sec/aims/screen/resources/cart.fxml"));
+
+					CartScreenController controller = new CartScreenController(cart);
+					loader.setController(controller);
+					Parent rootParent = loader.load();
+					fxPanel.setScene(new Scene(rootParent));
+				}catch (IOException e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+			}
+		});
+
+	}
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+	
+	public static void main(String[] args) {
+	    // Create a new Cart
+	    Cart cart = new Cart();
+
+	    // Create a new instance of CartScreen
+	    CartScreen cartScreen = new CartScreen(cart);
+	    
+	    // Set the default close operation
+	    cartScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    
+	    // Pack and display the frame
+	    cartScreen.pack();
+	    cartScreen.setVisible(true);
+	}
+
+}

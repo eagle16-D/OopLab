@@ -1,0 +1,22 @@
+package hust.soict.sec.aims.screen;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import javafx.embed.swing.JFXPanel;
+
+@SuppressWarnings("serial")
+public class updateStoreScreen extends StoreScreen{
+	
+	public updateStoreScreen() {
+		super(getStore());
+		
+		this.setTitle("Update store");
+
+		
+	}
+	
+	public static void main(String[] args) {
+		new updateStoreScreen();
+	}
+}

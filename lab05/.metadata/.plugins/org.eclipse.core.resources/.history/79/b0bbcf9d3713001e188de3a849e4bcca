@@ -1,0 +1,55 @@
+package hust.soict.sec.aims.screen;
+
+import java.io.IOException;
+
+import javax.swing.JFrame;
+
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+
+@SuppressWarnings("serial")
+public class AddCDToStoreScreen extends JFrame {
+	private static AddCDToStoreScreen instance;
+	
+	public AddCDToStoreScreen() {
+		super();
+		
+    	JFXPanel fJfxPanel = new JFXPanel();
+    	this.add(fJfxPanel);
+    	
+    	this.setSize(800, 600);
+    	this.setTitle("Add Media to Store");
+    	this.setVisible(true);
+    	
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				try {
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("/hust/soict/sec/aims/screen/updateStore.fxml"));
+					AddMediaController controller = new AddMediaController();
+					loader.setController(controller);
+					Parent rootParent = loader.load();
+					fJfxPanel.setScene(new Scene(rootParent));
+					
+			        controller.btnAddCDPressed(null);
+			        controller.getBtnAddCD().setSelected(true);
+				} catch (IOException e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+			}
+		});
+    }
+	
+	public static AddCDToStoreScreen getInstance() {
+		if(instance == null) {
+			instance = new AddCDToStoreScreen();
+		}
+		return instance;
+	}
+}

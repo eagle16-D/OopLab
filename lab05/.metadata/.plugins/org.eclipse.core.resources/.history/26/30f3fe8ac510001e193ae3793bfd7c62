@@ -1,0 +1,61 @@
+package hust.soict.sec.javafx;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+
+public class PainterController {
+
+    @FXML
+    private Pane drawingAreaPane;
+
+    @FXML
+    private ToggleGroup identical;
+
+    private Color inkColor = Color.BLACK;
+    private Color eraserColor = Color.WHITE;
+
+    @FXML
+    void clearButtonPressed(ActionEvent event) {
+        drawingAreaPane.getChildren().clear();
+    }
+
+    @FXML
+    void drawingAreaMouseDragged(MouseEvent event) {
+        Circle newCircle = new Circle(event.getX(), event.getY(), 4, inkColor);
+        drawingAreaPane.getChildren().add(newCircle);
+    }
+
+    @FXML
+    void drawingAreaMouseDraggedEraser(MouseEvent event) {
+        Circle newCircle = new Circle(event.getX(), event.getY(), 4, eraserColor);
+        drawingAreaPane.getChildren().add(newCircle);
+    }
+    
+    // Other code for handling pen color, size, etc.
+    
+    @FXML
+    void handleCanvasMouseDragged(MouseEvent event) {
+        Canvas canvas = (Canvas) drawingAreaPane.getChildren().get(0);
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        double x = event.getX();
+        double y = event.getY();
+
+        if (event.isPrimaryButtonDown()) {
+            gc.setStroke(inkColor);
+            gc.lineTo(x, y);
+            gc.stroke();
+        } else if (event.isSecondaryButtonDown()) {
+            gc.setStroke(eraserColor);
+            gc.lineTo(x, y);
+            gc.stroke();
+            gc.setStroke(inkColor);
+        }
+    }
+}

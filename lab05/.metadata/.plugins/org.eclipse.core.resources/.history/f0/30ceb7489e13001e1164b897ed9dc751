@@ -1,0 +1,5 @@
+package hust.soict.sec.aims.media;
+
+public interface Playable throws PlayerException{
+	public void play();
+}

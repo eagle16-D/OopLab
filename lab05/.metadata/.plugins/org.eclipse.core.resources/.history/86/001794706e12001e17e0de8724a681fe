@@ -1,0 +1,24 @@
+package hust.soict.sec.aims.screen;
+
+import javax.swing.JFrame;
+
+import javafx.embed.swing.JFXPanel;
+
+@SuppressWarnings("serial")
+public class updateStoreScreen extends JFrame{
+	
+	public updateStoreScreen() {
+		super();
+		
+		JFXPanel fxPanel = new JFXPanel();
+		this.add(fxPanel);
+		
+		this.setTitle("Update store");
+		this.setVisible(true);
+		this.setSize(1024, 768);
+		
+	}
+	public static void main(String[] args) {
+		new updateStoreScreen();
+	}
+}

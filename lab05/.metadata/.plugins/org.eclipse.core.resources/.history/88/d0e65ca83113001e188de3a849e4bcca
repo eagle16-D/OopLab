@@ -1,0 +1,191 @@
+package hust.soict.sec.aims.screen;
+
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+
+
+import hust.soict.sec.aims.media.CompactDisc;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.VBox;
+
+public class AddMediaController {
+
+	@FXML
+    private ResourceBundle resources;
+
+    @FXML
+    private URL location;
+
+    @FXML
+    private VBox AddBookLayout;
+
+    @FXML
+    private VBox AddCDLayout;
+
+    @FXML
+    private VBox AddDVDLayout;
+
+    @FXML
+    private TextField IDField;
+
+    @FXML
+    private TextField IDField1;
+
+    @FXML
+    private TextField IDField2;
+
+    @FXML
+    private TextField artistField;
+
+    @FXML
+    private Button btnAdd;
+
+    @FXML
+    private Button btnAdd1;
+
+    @FXML
+    private Button btnAdd2;
+
+    @FXML
+    private ToggleButton btnAddBook;
+
+    @FXML
+    private ToggleButton btnAddCD;
+
+    @FXML
+    private ToggleButton btnAddDVD;
+
+    @FXML
+    private MenuItem btnViewCart;
+
+    @FXML
+    private MenuItem btnViewStore;
+
+    @FXML
+    private TextField categoryField;
+
+    @FXML
+    private TextField categoryField1;
+
+    @FXML
+    private TextField categoryField2;
+
+    @FXML
+    private TextField costField;
+
+    @FXML
+    private TextField costField1;
+
+    @FXML
+    private TextField costField2;
+
+    @FXML
+    private TextField directoryField1;
+
+    @FXML
+    private ToggleGroup identical;
+
+    @FXML
+    private TextField lengthField1;
+
+    @FXML
+    private TextField lengthField2;
+
+    @FXML
+    private TextField titleField;
+
+    @FXML
+    private TextField titleField1;
+
+    @FXML
+    private TextField titleField2;
+
+    @FXML
+    void btnAddPressed(ActionEvent event) {
+    	int id = Integer.parseInt(IDField.getText());
+    	String title = titleField.getText();
+    	String category = categoryField.getText();
+    	Float cost = Float.parseFloat(costField.getText());
+    	String artist = artistField.getText();
+    	
+    	CompactDisc CD = new CompactDisc(id, title, category, cost, artist);
+    	StoreScreen.getInstance().addMediaToStore(CD);
+    	
+    }
+
+    @FXML
+    void btnViewCartPressed(ActionEvent event) {
+    	StoreScreen.openCartScreen();
+    }
+
+    @FXML
+    void btnViewStorePressed(ActionEvent event) {
+    	StoreScreen.getInstance().openStoreScreen();
+    }
+
+
+    @FXML
+    void initialize() {
+    	
+    }
+    
+    @FXML
+    void btnAddBookPressed(ActionEvent event) {
+    	AddBookLayout.setVisible(true);
+    	AddCDLayout.setVisible(false);
+    	AddDVDLayout.setVisible(false);
+    }
+
+    @FXML
+    void btnAddCDPressed(ActionEvent event) {
+    	AddBookLayout.setVisible(false);
+    	AddCDLayout.setVisible(true);
+    	AddDVDLayout.setVisible(false);
+    }
+
+    @FXML
+    void btnAddDVDPressed(ActionEvent event) {
+    	AddBookLayout.setVisible(false);
+    	AddCDLayout.setVisible(false);
+    	AddDVDLayout.setVisible(true);
+    }
+
+    
+    @SuppressWarnings("exports")
+	public VBox getAddCDLayout() {
+    	return AddCDLayout;
+    }
+    
+	@SuppressWarnings("exports")
+	public VBox getAddDVDLayout() {
+    	return AddDVDLayout;
+    }
+	
+	@SuppressWarnings("exports")
+	public VBox getAddBookLayout() {
+    	return AddBookLayout;
+    }
+
+	@SuppressWarnings("exports")
+	public ToggleButton getBtnAddBook() {
+		return btnAddBook;
+	}
+
+	@SuppressWarnings("exports")
+	public ToggleButton getBtnAddCD() {
+		return btnAddCD;
+	}
+
+	@SuppressWarnings("exports")
+	public ToggleButton getBtnAddDVD() {
+		return btnAddDVD;
+	}
+}

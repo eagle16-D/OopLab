@@ -1,0 +1,77 @@
+package hust.soict.sec.aims.screen;
+
+import java.awt.BorderLayout;
+import java.net.URL;
+import java.util.ResourceBundle;
+import hust.soict.sec.aims.screen.*;
+
+import hust.soict.sec.aims.Store;
+import hust.soict.sec.aims.media.CompactDisc;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
+
+public class AddCDController {
+
+    @FXML
+    private ResourceBundle resources;
+
+    @FXML
+    private URL location;
+
+    @FXML
+    private TextField artistField;
+
+    @FXML
+    private Button btnAdd;
+
+    @FXML
+    private MenuItem btnViewCart;
+
+    @FXML
+    private MenuItem btnViewStore;
+
+    @FXML
+    private TextField categoryField;
+
+    @FXML
+    private TextField costField;
+
+    @FXML
+    private TextField titleField;
+    
+    @FXML
+    private TextField IDField;
+
+    @FXML
+    void btnAddPressed(ActionEvent event) {
+    	int id = Integer.parseInt(IDField.getText());
+    	String title = titleField.getText();
+    	String category = categoryField.getText();
+    	Float cost = Float.parseFloat(costField.getText());
+    	String artist = artistField.getText();
+    	
+    	CompactDisc CD = new CompactDisc(id, title, category, cost, artist);
+    	StoreScreen.getInstance().addMediaToStore(CD);
+    	
+    }
+
+    @FXML
+    void btnViewCartPressed(ActionEvent event) {
+    	StoreScreen.openCartScreen();;
+    }
+
+    @FXML
+    void btnViewStorePressed(ActionEvent event) {
+
+    }
+
+    @FXML
+    void initialize() {
+        
+
+    }
+
+}

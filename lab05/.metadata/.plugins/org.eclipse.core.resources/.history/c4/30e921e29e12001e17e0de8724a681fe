@@ -1,0 +1,25 @@
+package hust.soict.sec.aims.screen;
+
+import java.awt.GridLayout;
+
+import javax.swing.JPanel;
+
+@SuppressWarnings("serial")
+public class updateStoreScreen extends StoreScreen{
+	
+	public updateStoreScreen() {
+		super(getStore());
+		
+		setTitle("Update store");
+	}
+//	@Override
+//	JPanel createCenter() {
+//		
+//		JPanel centerJPanel = new JPanel();
+//		
+//	}
+	
+	public static void main(String[] args) {
+		new updateStoreScreen();
+	}
+}
