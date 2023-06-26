@@ -1,21 +1,27 @@
 package hust.soict.sec.aims.cart;
 
-import java.util.ArrayList;
+
+import javax.naming.LimitExceededException;
 
 import hust.soict.sec.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
-	private static ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+	private static ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
 	
-	public void addMedia(Media media) {
+	public void addMedia(Media media) throws LimitExceededException{
 		if(itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
 			itemsOrdered.add(media);
 //			System.out.println("the media is added");
 		}
+		else {
+			throw new LimitExceededException("Error: the number of media has reached its limit");
+		}
 	}
 	
-	protected void removeMedia(Media media) {
+	public void removeMedia(Media media) {
 		if(itemsOrdered.contains(media)) {
 			itemsOrdered.remove(media);
 			System.out.println(media.getTitle() + " is removed");
@@ -43,7 +49,7 @@ public class Cart {
 		System.out.println("*****************************************************************");
 	}
 	
-	public static ArrayList<Media> getItemsOrdered(){
+	public static ObservableList<Media> getItemsOrdered(){
 		return itemsOrdered;
 	}
 	

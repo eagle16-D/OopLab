@@ -2,12 +2,13 @@ package hust.soict.sec.aims;
 
 import java.util.ArrayList;
 
-import hust.soict.sec.aims.media.Book;
+import javax.naming.LimitExceededException;
+
 import hust.soict.sec.aims.media.Media;
 
 public class Store {
 	private static ArrayList<Media> itemsInStore = new ArrayList<Media>();
-	public void addMedia(Media media) {
+	public void addMedia(Media media){
 		if(!itemsInStore.contains(media)) {
 			itemsInStore.add(media);
 //			System.out.println("the media " + media.getTitle() + " is added");
@@ -34,8 +35,7 @@ public class Store {
 		return itemsInStore;
 	}
 	
-<<<<<<< Updated upstream
-=======
+
 	public static void print() {
 		System.out.println("******************************STORE******************************");
 		System.out.println("Ordered Items:");
@@ -51,5 +51,5 @@ public class Store {
 		}
 	}
 	
->>>>>>> Stashed changes
+
 }
