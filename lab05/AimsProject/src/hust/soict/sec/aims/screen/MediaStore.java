@@ -73,7 +73,6 @@ public class MediaStore extends JPanel {
 		    if (buttonString.equals("Play")) {
 		        JDialog dialog = new JDialog();
 		        dialog.setTitle("Playing");
-		        dialog.setSize(200, 200);
 		        
 		        JLabel label = new JLabel(media.toString());
 		        label.setHorizontalAlignment(JLabel.CENTER);
