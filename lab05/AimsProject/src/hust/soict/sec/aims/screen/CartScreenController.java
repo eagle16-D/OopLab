@@ -1,10 +1,14 @@
 package hust.soict.sec.aims.screen;
 
+import java.awt.BorderLayout;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
+
+import javax.swing.JDialog;
+import javax.swing.JLabel;
 
 import hust.soict.sec.aims.store.*;
 import hust.soict.sec.aims.cart.Cart;
@@ -15,6 +19,7 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,6 +41,9 @@ public class CartScreenController {
 	
 	@FXML
     private ResourceBundle resources;
+	
+    @FXML
+    private Button btnPlaceOrder;
 
     @FXML
     private URL location;
@@ -121,42 +129,8 @@ public class CartScreenController {
 			}
     		
     	});
-    	
-    	tfFilter.textProperty().addListener(new ChangeListener<String>() {
-    		@Override
-    		public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-    			showFilteredMedia(newValue);
-    		}
-    	});
-    }
-	
-	private void showFilteredMedia(String filterText) {
-	    // Retrieve the currently selected radio button
-	    RadioButton selectedRadioButton;
-	    if (radioBtnFilterId.isSelected()) {
-	        selectedRadioButton = radioBtnFilterId;
-	    } else {
-	        selectedRadioButton = radioBtnFilterTitle;
-	    }
-
-	    // Determine the filtering criteria based on the selected radio button
-	    Predicate<Media> filterPredicate;
-	    if (selectedRadioButton == radioBtnFilterId) {
-	        filterPredicate = media -> String.valueOf(media.getId()).contains(filterText);
-	    } else {
-	        filterPredicate = media -> media.getTitle().toLowerCase().contains(filterText.toLowerCase());
-	    }
-
-	    // Wrap the existing ObservableList in a FilteredList and apply the filter predicate
-	    FilteredList<Media> filteredList = new FilteredList<>(tblMedia.getItems());
-	    // Add a listener to the filter text property to dynamically update the filtered results
-	    tfFilter.textProperty().addListener((observable, oldValue, newValue) -> {
-	        filteredList.setPredicate(filterPredicate);
-	    });
-
-	    // Update the TableView to display the filtered results
-	    tblMedia.setItems(filteredList);
 	}
+	
 
 
 	
@@ -169,6 +143,27 @@ public class CartScreenController {
 			btnPlay.setVisible(false);
 		}
 	}
+	
+
+    @FXML
+    void btnPlaceOrderPressed(ActionEvent event) {
+    	Cart.getItemsOrdered().clear();
+    	tblMedia.refresh();
+    	totalCost.setText(" 0 $");
+    	
+    	JDialog dialog = new JDialog();
+    	
+    	dialog.setTitle("Notify");
+    	dialog.setBounds(300, 250, 300, 200);
+    	dialog.setResizable(true);
+    	
+    	JLabel lable = new JLabel("you bought all media in your cart");
+    	lable.setHorizontalAlignment(JLabel.CENTER);
+    	
+    	dialog.add(lable, BorderLayout.CENTER);
+    	dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+    	dialog.setVisible(true);
+    }
 	
 
     @FXML

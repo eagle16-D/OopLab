@@ -111,18 +111,23 @@ public class AddMediaController {
     @FXML
     void btnAddPressed(ActionEvent event) {
     	if(AddBookLayout.isVisible() == true) {
-    		int id = Integer.parseInt(IDFieldBook.getText());
-    		String title = titleFieldBook.getText();
-    		String category = categoryFieldBook.getText();
-    		Float cost = Float.parseFloat(costFieldBook.getText());
-    		int len = Integer.parseInt(lengthFieldBook.getText());
+    		try {
+    			int id = Integer.parseInt(IDFieldBook.getText());
+    			String title = titleFieldBook.getText();
+    			String category = categoryFieldBook.getText();
+    			Float cost = Float.parseFloat(costFieldBook.getText());
+    			int len = Integer.parseInt(lengthFieldBook.getText());
+    			Book book= new Book(id, title, category, cost, len);
+    			StoreScreen.getInstance().addMediaToStore(book);
+    		}catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
     		
-    		Book book= new Book(id, title, category, cost, len);
-    		StoreScreen.getInstance().addMediaToStore(book);
     		
     	}
     	else if(AddCDLayout.isVisible() == true) {
-    		
+    		try {
+    			
     		int id = Integer.parseInt(IDFieldCD.getText());
     		String title = titleFieldCD.getText();
     		String category = categoryFieldCD.getText();
@@ -131,9 +136,14 @@ public class AddMediaController {
     		
     		CompactDisc CD = new CompactDisc(id, title, category, cost, artist);
     		StoreScreen.getInstance().addMediaToStore(CD);
+    		}catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
     		
     	}
     	else if(AddDVDLayout.isVisible() == true) {
+    		try {
+    			
     		int id = Integer.parseInt(IDFieldDVD.getText());
     		String title = titleFieldDVD.getText();
     		String category = categoryFieldDVD.getText();
@@ -142,6 +152,10 @@ public class AddMediaController {
     		String directory = directoryFieldDVD.getText();
     		DigitalVideoDisc dvd = new DigitalVideoDisc(id, title, category, cost, directory, len);
     		StoreScreen.getInstance().addMediaToStore(dvd);
+    		}catch (NumberFormatException e) {
+				// TODO: handle exception
+    			e.printStackTrace();
+			}
     	}
     }
 
